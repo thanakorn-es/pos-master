@@ -1,0 +1,140 @@
+
+
+CREATE COMPUTE MODULE NewEmployee_Get_Data
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Sample data
+		-- SET OutputRoot.JSON.Data.a = InputRoot.JSON.Data.aa;
+		
+		-- Sample header
+		-- SET OutputRoot.JSON.Data.b = InputRoot.HTTPInputHeader."X-Original-HTTP-Command";
+		
+		-- To Revel 
+		-- Required Fields ======================
+		
+		
+		
+		-- To SmartCareer and Menulink 
+		DECLARE CR CHAR CAST(CAST(X'0A' AS BLOB) AS CHAR CCSID 874 );
+		DECLARE now, out_msg CHARACTER;	
+		-- SmartCareer ====================== 
+		-- username	email	firstname	lastname	institution	profile_field_orgnameglobal	profile_field_functionname	profile_field_bugroup	profile_field_levelcode	profile_field_orgunitcode	profile_field_titleglobal	profile_field_levelname	profile_field_jobtitle	suspended	profile_field_joindate	profile_field_catcode	lang	password
+		
+		SET OutputLocalEnvironment.Destination.File.Directory = '/wmb_logs/data';
+		-- SET OutputLocalEnvironment.Destination.File.Directory = 'C:\IIB';
+		SET OutputLocalEnvironment.Destination.File.Name = InputRoot.JSON.Data.EmployeeData.HR06_IdentificationNo || '.csv'; 
+		SET OutputLocalEnvironment.Destination.File.Action = 'Append';
+		-- SET out_msg = 'Hello';
+		SET out_msg = 'username,email,firstname,lastname,institution,profile_field_orgnameglobal,profile_field_functionname,profile_field_bugroup,profile_field_levelcode,profile_field_orgunitcode,profile_field_titleglobal,profile_field_levelname,profile_field_jobtitle,suspended,profile_field_joindate,profile_field_catcode,lang,password' || CR;
+		
+		SET out_msg = out_msg || InputRoot.JSON.Data.EmployeeData.HR06_IdentificationNo || ',';
+		SET out_msg = out_msg || 'menulink@gmail.com' || ',';
+		SET out_msg = out_msg || InputRoot.JSON.Data.EmployeeData.HR01_EmployeeFirstNameI || ',';
+		SET out_msg = out_msg || InputRoot.JSON.Data.EmployeeData.HR01_EmployeeLastNameI || ',';
+		SET out_msg = out_msg || 'from menulink' || ',';
+		SET out_msg = out_msg || '"The Minor Food Group Public Co.,Ltd. (TPC)"' || ','; 
+		SET out_msg = out_msg || 'from menulink' || ',';
+		SET out_msg = out_msg || 'NOT USC' || ',';
+		SET out_msg = out_msg || 'L6' || ',';
+		SET out_msg = out_msg || 'NA' || ',';
+		SET out_msg = out_msg || 'NA' || ',';
+		SET out_msg = out_msg || 'NA' || ',';
+		SET out_msg = out_msg || 'NA' || ',';
+		SET out_msg = out_msg || '0' || ',';
+		SET out_msg = out_msg || '0' || ',';
+		SET out_msg = out_msg || 'NA' || ',';
+		SET out_msg = out_msg || 'th' || ',';
+		SET out_msg = out_msg || 'minorfood1' || ',';
+		SET out_msg = out_msg || CR;
+				
+		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB CCSID 874);
+		PROPAGATE TO TERMINAL 'out2' ENVIRONMENT OutputLocalEnvironment MESSAGE OutputRoot;
+		
+		
+		/* SmartCareer 
+		Address2":null,
+		"Contact_Address":null,
+		"Contact_Province":null,
+		"Contract_Address2":null,
+		"Contract_PostalCode":null,
+		"CreateDateTime":null,
+		"Email":"surapun@me.com",
+		"EmegencyContact_Name":null,
+		"EmergencyContact_Phone":null,
+		"HR01_EmployeeFirstNameI":null,
+		"HR01_EmployeeFirstNameL":null,
+		"HR01_EmployeeLastNameI":null,
+		"HR01_EmployeeLastNameL":null,
+		"HR01_TitleNameI":null,
+		"HR01_TitleNameL":null,
+		"HR03_AltTelephone":null,
+		"HR03_BirthDate":null,
+		"HR03_Telephone":null,
+		"HR04_Address":null,
+		"HR04_Country":null,
+		"HR06_IdentificationNo":null,
+		"HR07_TerminateDate":null,
+		"HR29_JoinDate":null,
+		"InterfaceDateTime":null,
+		"InterfaceFlag":null,
+		"Oracle_BU":null,
+		"Position":null,
+		"PostalCode":null,
+		"Province":null,
+		"SalaryType":null,
+		"StaffLevel":null
+		*/
+		SET OutputRoot.JSON.Data.EmployeeData.Address2 = InputRoot.JSON.Data.EmployeeData.Address2;
+		SET OutputRoot.JSON.Data.EmployeeData.Contact_Address = InputRoot.JSON.Data.EmployeeData.Contact_Address;
+		SET OutputRoot.JSON.Data.EmployeeData.Contact_Province = InputRoot.JSON.Data.EmployeeData.Contact_Province;
+		SET OutputRoot.JSON.Data.EmployeeData.Contract_Address2 = InputRoot.JSON.Data.EmployeeData.Contract_Address2;
+		SET OutputRoot.JSON.Data.EmployeeData.Contract_PostalCode = InputRoot.JSON.Data.EmployeeData.Contract_PostalCode;
+		SET OutputRoot.JSON.Data.EmployeeData.CreateDateTime = InputRoot.JSON.Data.EmployeeData.CreateDateTime;
+		SET OutputRoot.JSON.Data.EmployeeData.Email = InputRoot.JSON.Data.EmployeeData.Email;
+		SET OutputRoot.JSON.Data.EmployeeData.EmegencyContact_Name = InputRoot.JSON.Data.EmployeeData.EmegencyContact_Name;
+		SET OutputRoot.JSON.Data.EmployeeData.EmergencyContact_Phone = InputRoot.JSON.Data.EmployeeData.EmergencyContact_Phone;
+		SET OutputRoot.JSON.Data.EmployeeData.HR01_EmployeeFirstNameI = InputRoot.JSON.Data.EmployeeData.HR01_EmployeeFirstNameI;
+		SET OutputRoot.JSON.Data.EmployeeData.HR01_EmployeeFirstNameL = InputRoot.JSON.Data.EmployeeData.HR01_EmployeeFirstNameL;
+		SET OutputRoot.JSON.Data.EmployeeData.HR01_EmployeeLastNameI = InputRoot.JSON.Data.EmployeeData.HR01_EmployeeLastNameI;
+		SET OutputRoot.JSON.Data.EmployeeData.HR01_EmployeeLastNameL = InputRoot.JSON.Data.EmployeeData.HR01_EmployeeLastNameL;
+		SET OutputRoot.JSON.Data.EmployeeData.HR01_TitleNameI = InputRoot.JSON.Data.EmployeeData.HR01_TitleNameI;
+		SET OutputRoot.JSON.Data.EmployeeData.HR01_TitleNameL = InputRoot.JSON.Data.EmployeeData.HR01_TitleNameL;
+		SET OutputRoot.JSON.Data.EmployeeData.HR03_AltTelephone = InputRoot.JSON.Data.EmployeeData.HR03_AltTelephone;
+		SET OutputRoot.JSON.Data.EmployeeData.HR03_BirthDate = InputRoot.JSON.Data.EmployeeData.HR03_BirthDate;
+		SET OutputRoot.JSON.Data.EmployeeData.HR03_Telephone = InputRoot.JSON.Data.EmployeeData.HR03_Telephone;
+		SET OutputRoot.JSON.Data.EmployeeData.HR04_Address = InputRoot.JSON.Data.EmployeeData.HR04_Address;
+		SET OutputRoot.JSON.Data.EmployeeData.HR04_Country = InputRoot.JSON.Data.EmployeeData.HR04_Country;
+		SET OutputRoot.JSON.Data.EmployeeData.HR06_IdentificationNo = InputRoot.JSON.Data.EmployeeData.HR06_IdentificationNo;
+		SET OutputRoot.JSON.Data.EmployeeData.HR07_TerminateDate = InputRoot.JSON.Data.EmployeeData.HR07_TerminateDate;
+		SET OutputRoot.JSON.Data.EmployeeData.HR29_JoinDate = InputRoot.JSON.Data.EmployeeData.HR29_JoinDate;
+		SET OutputRoot.JSON.Data.EmployeeData.InterfaceDateTime = InputRoot.JSON.Data.EmployeeData.InterfaceDateTime;
+		SET OutputRoot.JSON.Data.EmployeeData.InterfaceFlag = InputRoot.JSON.Data.EmployeeData.InterfaceFlag;
+		SET OutputRoot.JSON.Data.EmployeeData.Oracle_BU = InputRoot.JSON.Data.EmployeeData.Oracle_BU;
+		SET OutputRoot.JSON.Data.EmployeeData.Position = InputRoot.JSON.Data.EmployeeData.Position;
+		SET OutputRoot.JSON.Data.EmployeeData.PostalCode = InputRoot.JSON.Data.EmployeeData.PostalCode;
+		SET OutputRoot.JSON.Data.EmployeeData.Province = InputRoot.JSON.Data.EmployeeData.Province;
+		SET OutputRoot.JSON.Data.EmployeeData.SalaryType = InputRoot.JSON.Data.EmployeeData.SalaryType;
+		SET OutputRoot.JSON.Data.EmployeeData.StaffLevel = InputRoot.JSON.Data.EmployeeData.StaffLevel;
+		SET OutputRoot.JSON.Data.HeaderData.Description = 'Succeeded';
+		SET OutputRoot.JSON.Data.HeaderData.ReqNo = InputRoot.JSON.Data.HeaderData.ReqNo;
+		SET OutputRoot.JSON.Data.HeaderData.ResCode = '0000';
+		SET OutputRoot.JSON.Data.HeaderData.ResNoResNo = null;
+		PROPAGATE TO TERMINAL 'out' ENVIRONMENT OutputLocalEnvironment MESSAGE OutputRoot;
+		
+		RETURN FALSE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

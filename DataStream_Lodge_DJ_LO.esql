@@ -1,0 +1,38 @@
+
+
+CREATE COMPUTE MODULE DataStream_Lodge_DJ_LO
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		/*
+		{
+  "id": 162,
+  "data_stream_id": 24,
+  "data_streamable_id": 111,
+  "data_streamable_type": "Department",
+  "rostering_ratio": 2.5
+}
+		*/
+		IF InputRoot.JSON.Data.data_streamable_type = 'Location' THEN
+			INSERT 
+				INTO Database.M_DATAJOIN(DSID, JOINTYPE, DSJID) 
+				VALUES( 
+					InputLocalEnvironment.Variables.dsid,
+					1,
+					InputRoot.JSON.Data.id
+				);
+			COMMIT;
+		ELSEIF InputRoot.JSON.Data.data_streamable_type = 'Department' THEN
+			INSERT 
+				INTO Database.M_DATAJOIN(DSID, JOINTYPE, DSJID) 
+				VALUES( 
+					InputLocalEnvironment.Variables.dsid,
+					2,
+					InputRoot.JSON.Data.id
+				);
+			COMMIT;
+		END IF;
+		
+		RETURN FALSE;
+	END;
+
+END MODULE;

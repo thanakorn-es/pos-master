@@ -1,0 +1,16 @@
+
+
+CREATE COMPUTE MODULE DataStream_LS
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE my_credentials ROW;
+		SET my_credentials.Item[] = (SELECT CC.SYSTEM_KEY AS SYSTEM_KEY FROM Database.C_CREDENTIALS AS CC, Database.C_ENVIRONMENT AS CE WHERE CC.SYSTEM_CODE = CE.REFCODE AND CE.SYSTEM_NAME = 'Tanda' AND CE.FLAG = 1 );
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."Authorization" = my_credentials.Item[1].SYSTEM_KEY;
+		
+		SET OutputLocalEnvironment.Variables.location_id = InputRoot.JSON.Data.location_id;
+		SET OutputRoot.JSON.Data.name = InputRoot.JSON.Data.location_id || '_ls'; 
+		SET OutputRoot.JSON.Data.data_interval = 900;
+		RETURN TRUE;
+	END;
+
+END MODULE;

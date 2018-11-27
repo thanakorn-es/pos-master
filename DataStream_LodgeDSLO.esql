@@ -1,0 +1,70 @@
+
+
+CREATE COMPUTE MODULE DataStream_LodgeDSLO
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		/*
+		{
+  "id": 1069,
+  "name": "My Special Data",
+  "source": "api",
+  "data_interval": 900,
+  "print_mode": "hidden",
+  "roster_display_mode": "values"
+}
+*/
+/*
+"ESTABLISHMENT" INTEGER, 
+		  "TYPE" INTEGER , 
+		  "DSID" INTEGER , 
+		  "CREATED_DATE" TIMESTAMP )   
+		  */
+
+		INSERT 
+			INTO Database.M_DATASTREAM(ESTABLISHMENT, TYPE, DSID) 
+			VALUES( 
+				InputLocalEnvironment.Variables.location_id,
+				1,
+				InputRoot.JSON.Data.id
+			);
+		COMMIT;
+		
+		/*
+{
+  "data_stream_id": 24,
+  "data_streamable_id": 111,
+  "data_streamable_type": "Department",
+  "rostering_ratio": 2.5
+}
+*/
+		DECLARE my_credentials ROW;		
+		SET my_credentials.Item[] = (SELECT CC.SYSTEM_KEY AS SYSTEM_KEY FROM Database.C_CREDENTIALS AS CC, Database.C_ENVIRONMENT AS CE WHERE CC.SYSTEM_CODE = CE.REFCODE AND CE.SYSTEM_NAME = 'Tanda' AND CE.FLAG = 1 );
+		
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."Authorization" = my_credentials.Item[1].SYSTEM_KEY;
+		SET OutputLocalEnvironment.Variables.dsid = InputRoot.JSON.Data.id;
+		SET OutputRoot.JSON.Data.data_stream_id = InputRoot.JSON.Data.id; 
+		SET OutputRoot.JSON.Data.data_streamable_id = InputLocalEnvironment.Variables.location_id; -- location id
+		SET OutputRoot.JSON.Data.data_streamable_type = 'Location';
+		SET OutputRoot.JSON.Data.rostering_ratio = 2.5;
+		PROPAGATE TO TERMINAL 'out' ENVIRONMENT OutputLocalEnvironment MESSAGE OutputRoot ;
+		
+		DECLARE i, count INTEGER 1;
+		DECLARE teams ROW;
+		SET teams.ResultSet[] = (SELECT MR.ID FROM Database.M_ROLE AS MR WHERE MR.LOCATION_ID = InputLocalEnvironment.Variables.location_id); 
+		SET count = CARDINALITY(teams.ResultSet[]);
+		WHILE i < count DO
+			SET OutputLocalEnvironment.Destination.REST.Request.Parameters."Authorization" = my_credentials.Item[1].SYSTEM_KEY;
+			SET OutputRoot.JSON.Data.data_stream_id = InputRoot.JSON.Data.id; 
+			SET OutputRoot.JSON.Data.data_streamable_id = teams.ResultSet[i].ID; -- team id
+			SET OutputRoot.JSON.Data.data_streamable_type = 'Department';
+			SET OutputRoot.JSON.Data.rostering_ratio = 2.5;
+			PROPAGATE TO TERMINAL 'out' ENVIRONMENT OutputLocalEnvironment MESSAGE OutputRoot ;
+		
+			SET i = i + 1;
+		END WHILE;
+		
+		 
+		RETURN FALSE;
+	END;
+
+END MODULE;
