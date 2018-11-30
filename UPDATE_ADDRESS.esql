@@ -1,0 +1,71 @@
+CREATE COMPUTE MODULE UPDATE_ADDRESS
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE inms CHARACTER;
+		DECLARE out_msg CHARACTER;
+		DECLARE SQLErrorText1 CHARACTER;   
+		DECLARE SQLCode1 INTEGER;  
+		DECLARE data_length INTEGER; 
+		SET SQLErrorText1 = '';
+		--* SET data_length = CARDINALITY(InputRoot.JSON.Data.objects.Item[]);
+		--* SET out_msg = CAST(data_length AS CHARACTER);
+		--* SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB  CCSID 874);
+		
+		--* SET out_msg = InputRoot.JSON.Data.Item.id;
+		--* SET OutputRoot.BLOB.BLOB = CAST(InputRoot AS BLOB  CCSID 874);
+		-- *SET OutputRoot.JSON.Data.*[1] =  InputRoot.JSON.Data.*[1];
+		--* SET OutputRoot.JSON = InputRoot.JSON;
+		--* SET OutputRoot.JSON.Data.a =  InputRoot.JSON.Data.Item.id;
+		--* SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB  CCSID 874);
+		--*SET OutputRoot.JSON.Data.A = InputRoot.JSON.Data.objects;
+		
+		DECLARE i INTEGER 1;
+		FOR source AS InputRoot.JSON.Data.objects.Item[] DO
+		
+		UPDATE Database.ADR_EST AS AE
+ 		SET active_adr = source.active,
+			alias = source.alias,
+			building_number = source.building_number,
+			city_name = source.city_name,
+			country = source.country,
+			county = source.county,
+			created_by_adr = source.created_by,
+			created_date_adr = source.created_date,
+			district = source.district,
+			door = source.door,
+			id_adr = source.id,
+			is_external = source.is_external,
+			latitude = source.latitude,
+			line_1 = CAST(source.line_1 AS CHARACTER  CCSID 1208),
+			line_2 = CAST(source.line_2 AS CHARACTER  CCSID 1208),
+			longitude = source.longitude,
+			province = source.province,
+			resource_uri_adr = source.resource_uri,
+			state = source.state,
+			updated_by_adr = source.updated_by,
+			updated_date_adr = source.updated_date,
+			uuid = source.uuid,
+			zipcode = source.zipcode
+			 WHERE AE.address = source.resource_uri;
+ 		--* WHERE SP.COMPANY = InputBody.Message.Company
+ 		SET SQLCode1 = SQLCODE;
+		SET SQLErrorText1 = CAST(i AS CHARACTER)||SQLErrorText1||CAST(source.line_1 AS CHARACTER );
+					
+		COMMIT;
+		
+		SET i = i + 1;
+		END FOR;
+		
+		SET out_msg = 'SQLCode = '||CAST(SQLCode1 AS CHARACTER);
+		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB CCSID 1208 );		
+		PROPAGATE TO TERMINAL 'out1';
+		
+		SET out_msg = 'SQLErrorText = '||SQLErrorText1;
+		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB CCSID 1208 );
+		PROPAGATE TO TERMINAL 'out1';
+		
+		RETURN TRUE;
+		
+	END;
+
+END MODULE;

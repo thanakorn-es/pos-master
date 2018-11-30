@@ -1,0 +1,13 @@
+
+
+CREATE COMPUTE MODULE UPD_ROLE_FLG
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		UPDATE Database.M_ROLE AS A
+		
+ 		SET flag = '9'
+ 		 			
+ 		where A.flag = '3';
+		RETURN TRUE;
+	END;
+END MODULE;

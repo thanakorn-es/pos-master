@@ -20,10 +20,11 @@ CREATE COMPUTE MODULE NewEmployee_Get_Data
 		-- SmartCareer ====================== 
 		-- username	email	firstname	lastname	institution	profile_field_orgnameglobal	profile_field_functionname	profile_field_bugroup	profile_field_levelcode	profile_field_orgunitcode	profile_field_titleglobal	profile_field_levelname	profile_field_jobtitle	suspended	profile_field_joindate	profile_field_catcode	lang	password
 		
+		-- SET OutputLocalEnvironment.Destination.File.Directory = '/INBOUND';
 		SET OutputLocalEnvironment.Destination.File.Directory = '/wmb_logs/data';
 		-- SET OutputLocalEnvironment.Destination.File.Directory = 'C:\IIB';
 		SET OutputLocalEnvironment.Destination.File.Name = InputRoot.JSON.Data.EmployeeData.HR06_IdentificationNo || '.csv'; 
-		SET OutputLocalEnvironment.Destination.File.Action = 'Append';
+		-- SET OutputLocalEnvironment.Destination.File.Action = 'Append';
 		-- SET out_msg = 'Hello';
 		SET out_msg = 'username,email,firstname,lastname,institution,profile_field_orgnameglobal,profile_field_functionname,profile_field_bugroup,profile_field_levelcode,profile_field_orgunitcode,profile_field_titleglobal,profile_field_levelname,profile_field_jobtitle,suspended,profile_field_joindate,profile_field_catcode,lang,password' || CR;
 		
@@ -48,7 +49,7 @@ CREATE COMPUTE MODULE NewEmployee_Get_Data
 		SET out_msg = out_msg || CR;
 				
 		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB CCSID 874);
-		PROPAGATE TO TERMINAL 'out2' ENVIRONMENT OutputLocalEnvironment MESSAGE OutputRoot;
+		PROPAGATE TO TERMINAL 'out2';
 		
 		
 		/* SmartCareer 
