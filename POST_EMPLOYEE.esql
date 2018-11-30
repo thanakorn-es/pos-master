@@ -65,12 +65,12 @@ CREATE COMPUTE MODULE POST_EMPLOYEE
 		
 		-- PROPAGATE TO TERMINAL 'out1';
 		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."Authorization" = my_credentials.Item[1].SYSTEM_KEY;	
-		PROPAGATE;
+		PROPAGATE TO TERMINAL 'out1';
 		
 		SET i = i + 1;
 		END WHILE;
 		
-		PROPAGATE TO TERMINAL 'out1';
+		-- PROPAGATE TO TERMINAL 'out1';
 		RETURN TRUE;
 		
 	END;

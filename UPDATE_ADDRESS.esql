@@ -24,15 +24,15 @@ CREATE COMPUTE MODULE UPDATE_ADDRESS
 		
 		UPDATE Database.ADR_EST AS AE
  		SET active_adr = source.active,
-			alias = source.alias,
+			-- alias = source.alias,
 			building_number = source.building_number,
 			city_name = source.city_name,
 			country = source.country,
-			county = source.county,
+			-- county = source.county,
 			created_by_adr = source.created_by,
 			created_date_adr = source.created_date,
 			district = source.district,
-			door = source.door,
+			-- door = source.door,
 			id_adr = source.id,
 			is_external = source.is_external,
 			latitude = source.latitude,
@@ -44,17 +44,12 @@ CREATE COMPUTE MODULE UPDATE_ADDRESS
 			state = source.state,
 			updated_by_adr = source.updated_by,
 			updated_date_adr = source.updated_date,
-			uuid = source.uuid,
+			-- uuid = source.uuid,
 			zipcode = source.zipcode
 			 WHERE AE.address = source.resource_uri;
  		--* WHERE SP.COMPANY = InputBody.Message.Company
  		SET SQLCode1 = SQLCODE;
-		SET SQLErrorText1 = CAST(i AS CHARACTER)||SQLErrorText1||CAST(source.line_1 AS CHARACTER );
-					
-		COMMIT;
-		
-		SET i = i + 1;
-		END FOR;
+		SET SQLErrorText1 = SQLERRORTEXT;
 		
 		SET out_msg = 'SQLCode = '||CAST(SQLCode1 AS CHARACTER);
 		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB CCSID 1208 );		
@@ -63,6 +58,14 @@ CREATE COMPUTE MODULE UPDATE_ADDRESS
 		SET out_msg = 'SQLErrorText = '||SQLErrorText1;
 		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB CCSID 1208 );
 		PROPAGATE TO TERMINAL 'out1';
+		
+					
+		COMMIT;
+		
+		SET i = i + 1;
+		END FOR;
+		
+		
 		
 		RETURN TRUE;
 		

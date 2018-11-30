@@ -8,7 +8,7 @@ CREATE COMPUTE MODULE WRITE_DATA_LOG
 		DECLARE CR CHAR CAST(CAST(X'0A' AS BLOB) AS CHAR CCSID 874 ); 
 
 		SET now = '['||CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss:SSSSSS')||']';
-		SET out_msg = now||'[DATA]: ';
+		SET out_msg = now||'[INFO]: ';
 		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB  CCSID 874);
 		PROPAGATE;
 					
