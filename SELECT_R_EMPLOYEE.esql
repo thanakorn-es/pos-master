@@ -72,9 +72,16 @@ CREATE COMPUTE MODULE SELECT_R_EMPLOYEE
 		SET SQLErrorText1 = SQLERRORTEXT;
 
  		COMMIT;
-		END FOR;
-		
+ 		
+ 		SET out_msg = 'SQLCode = '||CAST(SQLCode1 AS CHARACTER);
+		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB CCSID 1208 );		
 		PROPAGATE TO TERMINAL 'out1';
+		
+		SET out_msg = 'SQLErrorText = '||SQLErrorText1;
+		SET OutputRoot.BLOB.BLOB = CAST(out_msg AS BLOB CCSID 1208 );
+		PROPAGATE TO TERMINAL 'out1';
+		
+		END FOR;
 		
 		SET OutputRoot.JSON.Data.Del[] = select A.id from Database.M_EMPLOYEE AS A where A.flag = '3';
 		

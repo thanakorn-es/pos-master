@@ -9,75 +9,45 @@
       <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="24,203" URLSpecifier="/master/employee/reconcile" timeoutForClient="300">
         <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_23" location="916,215">
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_23" location="893,220">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="758,211" dataSource="MINORDB" computeExpression="esql://routine/#DELETE_EMPLOYEE.Main" computeMode="all" throwExceptionOnDatabaseError="false">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="617,210" dataSource="MINORDB" computeExpression="esql://routine/#DELETE_EMPLOYEE.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Delete Employee"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="782,100" definitionType="swagger_20" definitionFile="TandaAPI.yaml" operationName="deleteusers" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="727,180" definitionType="swagger_20" definitionFile="Tanda-API.yaml" operationName="DeleteUser" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="DEL Tanda-Employee"/>
         <parameters name="Authorization" expression=""/>
         <parameters name="id" expression=""/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_38" location="1018,71" outputDirectory="/wmb_logs/data" outputFilename="recon-employee.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Del"/>
-      </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="222,203" definitionType="swagger_20" definitionFile="RevelAPI.yaml" operationName="getEmployee" protocol="TLSv1.2" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="222,203" definitionType="swagger_20" definitionFile="Revel-API.yaml" operationName="GetEmployees" protocol="TLSv1.2" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="GET Revel-Employee"/>
         <parameters name="limit" expression=""/>
         <parameters name="API-AUTHENTICATION" expression=""/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="393,55" outputDirectory="/wmb_logs/data" outputFilename="recon-employee-get.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Employee"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="546,61" outputDirectory="/wmb_logs/data" outputFilename="recon-employee-tmp.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Insert Temp Table"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="410,319" outputDirectory="/wmb_logs/error" outputFilename="recon-employee-get.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Failed - Employee"/>
-      </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="419,207" dataSource="MINORDB" computeExpression="esql://routine/#INSERT_EMPLOYEE.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Insert TMP"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="553,209" dataSource="MINORDB" computeExpression="esql://routine/#SELECT_R_EMPLOYEE.Main" computeMode="all" throwExceptionOnDatabaseError="false">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="521,208" dataSource="MINORDB" computeExpression="esql://routine/#SELECT_R_EMPLOYEE.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Insert R_Employee"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="1015,160" outputDirectory="/wmb_logs/error" outputFilename="recon-employee-del.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Failed - DEL"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="968,319" outputDirectory="/wmb_logs/data" outputFilename="recon-employee-del.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Del1"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="138,200" dataSource="MINORDB" computeExpression="esql://routine/#GET_REVEL_KEY.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Get KEY"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="732,327" outputDirectory="/wmb_logs/data" outputFilename="recon-employee-uri.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Del2"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="911,13" dataSource="MINORDB" computeExpression="esql://routine/#UPD_EMPLOYEE_FLG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="853,162" dataSource="MINORDB" computeExpression="esql://routine/#UPD_EMPLOYEE_FLG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Update Employee Flag"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="333,275" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Log Err"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_22" location="901,30" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
+        <translation xmi:type="utility:ConstantString" string="Write Log5"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_15" location="915,131" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Log Err1"/>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_24" location="987,33" outputDirectory="/wmb_logs/data" outputFilename="ReconEmployee.txt" writeMode="writeInPlace">
+        <translation xmi:type="utility:ConstantString" string="Log - ReconEmployee"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_17" location="325,123" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Log"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_27" location="870,297" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
+        <translation xmi:type="utility:ConstantString" string="Write Error"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_18" location="502,135" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Log1"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_19" location="656,262" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Log2"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_20" location="858,267" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Log3"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_21" location="941,68" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Log4"/>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_28" location="936,303" outputDirectory="/wmb_logs/error" outputFilename="ReconEmployee.txt" writeMode="writeInPlace">
+        <translation xmi:type="utility:ConstantString" string="Error - ReconEmployee"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_20" targetNode="FCMComposite_1_16" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_39" targetNode="FCMComposite_1_23" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
@@ -87,22 +57,22 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_14" targetNode="FCMComposite_1_13" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_14" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_14" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_15" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_16" targetNode="FCMComposite_1_15" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_17" targetNode="FCMComposite_1_15" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_18" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_15" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_21" targetNode="FCMComposite_1_17" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_22" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_17" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_23" targetNode="FCMComposite_1_18" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_24" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_18" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_25" targetNode="FCMComposite_1_19" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_26" targetNode="FCMComposite_1_12" sourceNode="FCMComposite_1_19" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_27" targetNode="FCMComposite_1_20" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_28" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_20" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_29" targetNode="FCMComposite_1_21" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_30" targetNode="FCMComposite_1_38" sourceNode="FCMComposite_1_21" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_24" sourceNode="FCMComposite_1_22" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_22" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_13" targetNode="FCMComposite_1_22" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_19" targetNode="FCMComposite_1_22" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_21" targetNode="FCMComposite_1_22" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_22" targetNode="FCMComposite_1_22" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_23" targetNode="FCMComposite_1_22" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_24" targetNode="FCMComposite_1_28" sourceNode="FCMComposite_1_27" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_25" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_26" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_27" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_28" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_29" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_30" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_31" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_22" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

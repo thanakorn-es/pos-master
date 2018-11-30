@@ -19,7 +19,7 @@
         <translation xmi:type="utility:ConstantString" string="Create New Employee"/>
         <parameters name="API-AUTHENTICATION" expression=""/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="452,359" outputDirectory="/wmb_logs/data" writeMode="writeInPlace" fileFtp="true" remoteTransferType="SFTP" fileFtpServer="10.9.5.140:22" fileFtpUser="MNIB2FTPIDPRD" fileFtpDirectory="/HUMANICA/INBOUND" fileFtpRemoteOutputMode="append">
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="452,359" outputDirectory="/wmb_logs/data" writeMode="writeInPlace" fileFtp="true" remoteTransferType="SFTP" fileFtpServer="10.9.5.140:22" fileFtpUser="MNIB2FTPID" fileFtpDirectory="/MSCHOOL/INBOUND" fileFtpRemoteOutputMode="append">
         <translation xmi:type="utility:ConstantString" string="Create mSchool Record"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="772,220" computeExpression="esql://routine/#NewEmployee_LogRevelActivity.Main">

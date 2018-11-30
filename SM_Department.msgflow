@@ -7,23 +7,14 @@
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/POS_MASTER/icons/full/obj30/SM_Department.gif"/>
     <longDescription xmi:type="utility:ConstantString" string=" "/>
     <composition>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="528,96" outputDirectory="/wmb_logs/data" outputFilename="department-emproleest.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - EmpRoleEst"/>
-      </nodes>
       <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="4,251" URLSpecifier="/master/department/sync" timeoutForClient="600">
         <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="1113,264" definitionType="swagger_20" definitionFile="TandaAPI.yaml" operationName="postdepartments" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="1113,264" definitionType="swagger_20" definitionFile="Tanda-API.yaml" operationName="CreateDepartment" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="POST Tanda-Department"/>
         <parameters name="Authorization" expression=""/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="749,382" outputDirectory="/wmb_logs/error" outputFilename="department-role.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Error - Role"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="753,105" outputDirectory="/wmb_logs/data" outputFilename="department-role.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Role"/>
-      </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="393,252" definitionType="swagger_20" definitionFile="RevelAPI.yaml" operationName="getEmployeeRoleEstablishment" protocol="TLSv1.2" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="393,252" definitionType="swagger_20" definitionFile="Revel-API.yaml" operationName="GetEmployments" protocol="TLSv1.2" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="GET EmpRoleEst"/>
         <parameters name="limit" expression=""/>
         <parameters name="API-AUTHENTICATION" expression=""/>
@@ -37,28 +28,16 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_22" location="1021,260" dataSource="MINORDB" computeExpression="esql://routine/#POST_ROLE.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Create Department"/>
       </nodes>
-      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_23" location="1122,210">
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_23" location="1305,222">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_24" location="1341,158" outputDirectory="/wmb_logs/data" outputFilename="department-id.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Post Tanda"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_25" location="1317,365" outputDirectory="/wmb_logs/error" outputFilename="department-post.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Error - Post Tanda"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_26" location="1193,57" dataSource="MINORDB" computeExpression="esql://routine/#UPDATE_ROLEID.Main" computeMode="all" throwExceptionOnDatabaseError="false">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_26" location="1161,128" dataSource="MINORDB" computeExpression="esql://routine/#UPDATE_ROLEID.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Update Role ID"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_27" location="1382,40" outputDirectory="/wmb_logs/data" outputFilename="department-updateid.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - UpdateID"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_32" location="817,253" dataSource="MINORDB" computeExpression="esql://routine/#SELECT_ROLE.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Insert M_Role"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="533,388" outputDirectory="/wmb_logs/error" outputFilename="department-emproleest.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Error - EmpRoleEst"/>
-      </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="604,254" definitionType="swagger_20" definitionFile="RevelAPI.yaml" operationName="getRole" protocol="TLSv1.2" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="604,254" definitionType="swagger_20" definitionFile="Revel-API.yaml" operationName="GetRoles" protocol="TLSv1.2" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="GET Role"/>
         <parameters name="limit" expression=""/>
         <parameters name="API-AUTHENTICATION" expression=""/>
@@ -66,14 +45,14 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="281,252" dataSource="MINORDB" computeExpression="esql://routine/#INSERT_T_DEPARTMENT.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Insert T_Department"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="141,252" definitionType="swagger_20" definitionFile="TandaAPI.yaml" operationName="getDepartments" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="141,252" definitionType="swagger_20" definitionFile="Tanda-API.yaml" operationName="GetDepartments" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="GET Tanda-Department"/>
         <parameters name="Authorization" expression=""/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="900,256" dataSource="MINORDB" computeExpression="esql://routine/#UPDATE_DEPARTMENT.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Update Department"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="1014,68" definitionType="swagger_20" definitionFile="TandaAPI.yaml" operationName="putdepartments" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="963,159" definitionType="swagger_20" definitionFile="Tanda-API.yaml" operationName="UpdateDepartment" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="PUT Tanda-Department"/>
         <parameters name="Authorization" expression=""/>
         <parameters name="id" expression=""/>
@@ -81,74 +60,17 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_18" location="89,248" dataSource="MINORDB" computeExpression="esql://routine/#GET_TANDA_KEY.Main" computeMode="all" throwExceptionOnDatabaseError="false">
         <translation xmi:type="utility:ConstantString" string="Get KEY"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_19" location="1190,398" outputDirectory="/wmb_logs/data" outputFilename="department-post.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Post Data"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_44" location="1278,52" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
+        <translation xmi:type="utility:ConstantString" string="Write Log"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_28" location="1128,150" outputDirectory="/wmb_logs/data" outputFilename="department-put.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Put Data"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_29" location="449,168" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write EmpRoleEst"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_30" location="949,90" outputDirectory="/wmb_logs/data" outputFilename="department-update.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Update"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_31" location="682,172" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Role"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_33" location="873,169" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Update"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_34" location="1282,40" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write UpdateID"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="297,385" outputDirectory="/wmb_logs/error" outputFilename="department-tanda.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Error - Tanda"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="1258,-27" outputDirectory="/wmb_logs/error" outputFilename="department-put.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Error - Put Tanda"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="244,318" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Err Tanda"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_20" location="464,317" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Err EmpRoleEst"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_21" location="666,310" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Err Role"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_35" location="1246,269" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Err Post"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_36" location="1122,-19" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Err Put"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_38" location="157,381" outputDirectory="/wmb_logs/error" outputFilename="department-department.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Error - Service"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_39" location="76,318" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Err Service"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_40" location="341,88" outputDirectory="/wmb_logs/data" outputFilename="department-tanda.txt" writeMode="writeInPlace">
-        <translation xmi:type="utility:ConstantString" string="Log - Tanda"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_41" location="258,166" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Tanda"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_42" location="1038,146" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Put Data"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_45" location="980,321" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Department"/>
-      </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_46" location="1046,390" outputDirectory="/wmb_logs/data" outputFilename="department-new.txt" writeMode="writeInPlace">
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_49" location="1354,57" outputDirectory="/wmb_logs/data" outputFilename="Department.txt" writeMode="writeInPlace">
         <translation xmi:type="utility:ConstantString" string="Log - Department"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_47" location="1118,324" computeExpression="esql://routine/#WRITE_DATA_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Post Data"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_50" location="1292,473" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
+        <translation xmi:type="utility:ConstantString" string="Write Error"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_48" location="1236,200" computeExpression="esql://routine/#WRITE_ERR_LOG.Main" computeMode="all" throwExceptionOnDatabaseError="false">
-        <translation xmi:type="utility:ConstantString" string="Write Post Tanda"/>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_51" location="1420,480" outputDirectory="/wmb_logs/error" outputFilename="Department.txt" writeMode="writeInPlace">
+        <translation xmi:type="utility:ConstantString" string="Error - Department"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_15" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_24" targetNode="FCMComposite_1_26" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
@@ -163,45 +85,35 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_33" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_32" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_18" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_13" sourceNode="FCMComposite_1_18" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_29" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_29" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_29" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_31" targetNode="FCMComposite_1_31" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_32" targetNode="FCMComposite_1_14" sourceNode="FCMComposite_1_31" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_34" targetNode="FCMComposite_1_33" sourceNode="FCMComposite_1_32" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_35" targetNode="FCMComposite_1_30" sourceNode="FCMComposite_1_33" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_37" targetNode="FCMComposite_1_34" sourceNode="FCMComposite_1_26" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_38" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_34" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_13" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_27" targetNode="FCMComposite_1_20" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_30" targetNode="FCMComposite_1_20" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_36" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_20" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_39" targetNode="FCMComposite_1_21" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_40" targetNode="FCMComposite_1_21" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_41" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_21" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_42" targetNode="FCMComposite_1_35" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_43" targetNode="FCMComposite_1_35" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_44" targetNode="FCMComposite_1_25" sourceNode="FCMComposite_1_35" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_45" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_36" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_46" targetNode="FCMComposite_1_36" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_47" targetNode="FCMComposite_1_36" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_17" targetNode="FCMComposite_1_38" sourceNode="FCMComposite_1_39" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_23" targetNode="FCMComposite_1_39" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_25" targetNode="FCMComposite_1_39" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_26" targetNode="FCMComposite_1_39" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_48" targetNode="FCMComposite_1_40" sourceNode="FCMComposite_1_41" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_49" targetNode="FCMComposite_1_41" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_51" targetNode="FCMComposite_1_42" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_52" targetNode="FCMComposite_1_28" sourceNode="FCMComposite_1_42" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_53" targetNode="FCMComposite_1_46" sourceNode="FCMComposite_1_45" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_54" targetNode="FCMComposite_1_45" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_57" targetNode="FCMComposite_1_19" sourceNode="FCMComposite_1_47" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_58" targetNode="FCMComposite_1_48" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_59" targetNode="FCMComposite_1_24" sourceNode="FCMComposite_1_48" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_22" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_47" sourceNode="FCMComposite_1_22" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_23" sourceNode="FCMComposite_1_22" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_49" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_26" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_50" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_51" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_52" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_32" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_55" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_17" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_56" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_60" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_61" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_63" targetNode="FCMComposite_1_49" sourceNode="FCMComposite_1_44" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_64" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_65" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_22" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_66" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_67" targetNode="FCMComposite_1_51" sourceNode="FCMComposite_1_50" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_68" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_69" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_70" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_71" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_72" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_73" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_74" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_75" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_76" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_77" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_78" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_79" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_80" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_18" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
