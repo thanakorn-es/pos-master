@@ -6,7 +6,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/POS_MASTER/icons/full/obj16/SM_Manager.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/POS_MASTER/icons/full/obj30/SM_Manager.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="2,180" URLSpecifier="/sync/manager" timeoutForClient="600">
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="2,180" URLSpecifier="/master/manager/sync" timeoutForClient="600">
         <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
       </nodes>
       <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="740,204" definitionType="swagger_20" definitionFile="TandaAPI.yaml" operationName="postUsers" contentType="application/json" accept="application/json" acceptCompressedResponses="true">

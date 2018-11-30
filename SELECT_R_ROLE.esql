@@ -49,6 +49,9 @@ CREATE COMPUTE MODULE SELECT_R_ROLE
 					
 		COMMIT;			
 
+		DELETE FROM Database.R_ROLE AS D WHERE D.resource_uri_role = '/resources/Role/43/';
+		
+		COMMIT;
 		
 		SET i = i + 1;
 		END FOR;

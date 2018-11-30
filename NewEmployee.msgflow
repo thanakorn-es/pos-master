@@ -19,7 +19,7 @@
         <translation xmi:type="utility:ConstantString" string="Create New Employee"/>
         <parameters name="API-AUTHENTICATION" expression=""/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="424,360" outputDirectory="/wmb_logs/data" writeMode="writeInPlace" fileFtp="true" remoteTransferType="SFTP" fileFtpServer="10.9.5.140:22" fileFtpUser="MNIB2FTPID" fileFtpDirectory="/INBOUND" fileFtpRemoteOutputMode="append">
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="452,359" outputDirectory="/wmb_logs/data" writeMode="writeInPlace" fileFtp="true" remoteTransferType="SFTP" fileFtpServer="10.9.5.140:22" fileFtpUser="MNIB2FTPIDPRD" fileFtpDirectory="/HUMANICA/INBOUND" fileFtpRemoteOutputMode="append">
         <translation xmi:type="utility:ConstantString" string="Create mSchool Record"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="772,220" computeExpression="esql://routine/#NewEmployee_LogRevelActivity.Main">
@@ -34,7 +34,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="706,359" dataSource="MINORDB" computeExpression="esql://routine/#NewEmployee_LogFileActivity.Main">
         <translation xmi:type="utility:ConstantString" string="Log File Activity"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="914,355" writeMode="writeInPlace" fileFtp="true" remoteTransferType="SFTP" fileFtpServer="10.9.5.140:22" fileFtpUser="MNIB2FTPID" fileFtpDirectory="/INBOUND" fileFtpRemoteOutputMode="append">
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="914,355" writeMode="writeInPlace" remoteTransferType="SFTP" fileFtpServer="10.9.5.140:22" fileFtpUser="MNIB2FTPID" fileFtpDirectory="/INBOUND" fileFtpRemoteOutputMode="append">
         <translation xmi:type="utility:ConstantString" string="Activity File"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
@@ -42,8 +42,8 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.EOD"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.EOD"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out2" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out2" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

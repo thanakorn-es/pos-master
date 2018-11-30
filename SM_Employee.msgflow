@@ -12,7 +12,7 @@
       <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="349,36" outputDirectory="/wmb_logs/data" outputFilename="employee-Employee.txt" writeMode="writeInPlace">
         <translation xmi:type="utility:ConstantString" string="Log - Employee"/>
       </nodes>
-      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="23,211" URLSpecifier="/sync/user" timeoutForClient="1800">
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="23,211" URLSpecifier="/master/employee/sync" timeoutForClient="1800">
         <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
       </nodes>
       <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="794,228" definitionType="swagger_20" definitionFile="TandaAPI.yaml" operationName="postUsers" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
